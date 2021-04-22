@@ -49,12 +49,25 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+
+        $messages  = [
+            'name.min' => '11用户名长度不能小于2个字符',
+        ];
+
+
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255', 'min:2'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        ], $messages);
+//
+//        关于验证器的详解
+//        https://blog.csdn.net/wplblog/article/details/107763174
+
     }
+
+
+
 
     /**
      * Create a new user instance after a valid registration.

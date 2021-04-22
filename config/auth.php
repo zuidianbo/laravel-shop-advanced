@@ -71,6 +71,11 @@ return [
             'model' => App\User::class,
         ],
 
+//        'hyhs' => [
+//            'driver' => 'eloquent',
+//            'model' => App\User::class,
+//        ],
+
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
