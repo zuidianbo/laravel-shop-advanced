@@ -16,9 +16,19 @@
 //});
 
 
+//Route::get('/', 'PagesController@root')->name('root')->middleware('verified');
+//暂时把首页的邮箱认证去掉
 Route::get('/', 'PagesController@root')->name('root');
 
-Auth::routes();
+//需要让 Laravel 启用与邮箱验证相关的路由（验证邮箱页面、重发验证邮件页面等），操作也很简单，只需要
+//加上 ['verify' => true]
+Auth::routes(['verify' => true]);
+
+
+
+
+
+
 //Auth::routes();
 //等同于：
 //// 用户身份验证相关的路由
