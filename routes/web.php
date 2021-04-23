@@ -25,12 +25,6 @@ Route::get('/', 'PagesController@root')->name('root');
 Auth::routes(['verify' => true]);
 
 
-//收获地址列表
-// auth 中间件代表需要登录，verified中间件代表需要经过邮箱验证
-Route::group(['middleware' => ['auth', 'verified']], function() {
-    Route::get('user_addresses', 'UserAddressesController@index')->name('user_addresses.index');
-});
-
 
 //Auth::routes();
 //等同于：
@@ -54,4 +48,17 @@ Route::group(['middleware' => ['auth', 'verified']], function() {
 //Route::get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->name('verification.verify');
 //Route::post('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 //(首页使用自定义的路由 删除了这里生成的首页路由)
+
+
+
+
+//收获地址列表
+// auth 中间件代表需要登录，verified中间件代表需要经过邮箱验证
+Route::group(['middleware' => ['auth', 'verified']], function() {
+    Route::get('user_addresses', 'UserAddressesController@index')->name('user_addresses.index');
+//新增收获地址
+    Route::get('user_addresses/create', 'UserAddressesController@create')->name('user_addresses.create');
+//    保存收货地址
+    Route::post('user_addresses', 'UserAddressesController@store')->name('user_addresses.store');
+});
 
