@@ -18,7 +18,13 @@
 
 //Route::get('/', 'PagesController@root')->name('root')->middleware('verified');
 //暂时把首页的邮箱认证去掉
-Route::get('/', 'PagesController@root')->name('root');
+//Route::get('/', 'PagesController@root')->name('root');
+
+//用户一进来就能看到商品列表，因此让首页直接跳转到商品页面
+//我们希望游客也能够访问商品列表，所以这条路由不需要放到带有 auth 中间件的路由组中。
+Route::redirect('/', '/products')->name('root');
+Route::get('products', 'ProductsController@index')->name('products.index');
+
 
 //需要让 Laravel 启用与邮箱验证相关的路由（验证邮箱页面、重发验证邮件页面等），操作也很简单，只需要
 //加上 ['verify' => true]
