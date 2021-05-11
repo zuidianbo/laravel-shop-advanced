@@ -24,8 +24,6 @@
 //我们希望游客也能够访问商品列表，所以这条路由不需要放到带有 auth 中间件的路由组中。
 Route::redirect('/', '/products')->name('root');
 Route::get('products', 'ProductsController@index')->name('products.index');
-//商品详情;
-Route::get('products/{product}', 'ProductsController@show')->name('products.show');
 
 //需要让 Laravel 启用与邮箱验证相关的路由（验证邮箱页面、重发验证邮件页面等），操作也很简单，只需要
 //加上 ['verify' => true]
@@ -82,6 +80,12 @@ Route::group(['middleware' => ['auth', 'verified']], function() {
     Route::post('products/{product}/favorite', 'ProductsController@favor')->name('products.favor');
     Route::delete('products/{product}/favorite', 'ProductsController@disfavor')->name('products.disfavor');
 
+//    收藏列表
+    Route::get('products/favorites', 'ProductsController@favorites')->name('products.favorites');
+
+
 });
 
+//商品详情;
+Route::get('products/{product}', 'ProductsController@show')->name('products.show');
 
