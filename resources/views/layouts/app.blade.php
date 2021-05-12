@@ -10,6 +10,7 @@
     <!-- 样式 -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
+    {{--购物页面要用这个--}}
     <script src="{{ mix('js/app.js') }}"></script>
     @yield('scriptsAfterJs')
 
@@ -23,6 +24,7 @@
     @include('layouts._footer')
 </div>
 {{--<!-- JS 脚本 -->--}}
+{{--添加地址的时候要用这个--}}
 {{--<script src="{{ mix('js/app.js') }}"></script>--}}
 </body>
 </html>

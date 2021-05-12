@@ -15,6 +15,12 @@ return [
 
     'name' => env('APP_NAME', 'Laravel shop'),
 
+
+
+//    自定义 订单关闭时间
+    'order_ttl' => 1800,
+
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
