@@ -26,7 +26,27 @@ Route::group([
 //    订单详情
 
     $router->get('orders/{order}', 'OrdersController@show')->name('admin.orders.show');
+
+
+    //发货
+
+    $router->post('orders/{order}/ship', 'OrdersController@ship')->name('admin.orders.ship');
+
+
+
+
+
+
+
+
+
+
+
+
+
 });
+
+
 
 //$router->resource('users', UsersController::class);
 
