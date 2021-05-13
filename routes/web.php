@@ -113,6 +113,9 @@ Route::group(['middleware' => ['auth', 'verified']], function() {
     Route::post('orders/{order}/received', 'OrdersController@received')->name('orders.received');
 
 
+//    订单评价
+    Route::get('orders/{order}/review', 'OrdersController@review')->name('orders.review.show');
+    Route::post('orders/{order}/review', 'OrdersController@sendReview')->name('orders.review.store');
 });
 
 //商品详情;
