@@ -38,8 +38,8 @@ Route::group([
 
 
 
-
-
+//优惠券管理
+    $router->get('coupon_codes', 'CouponCodesController@index');
 
 
 

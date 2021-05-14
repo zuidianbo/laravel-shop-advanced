@@ -117,4 +117,12 @@ class Order extends Model
 
         return $no;
     }
+
+
+//    优惠券关系
+    public function couponCode()
+    {
+        return $this->belongsTo(CouponCode::class);
+    }
+
 }
