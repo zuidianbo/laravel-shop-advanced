@@ -54,6 +54,17 @@ Route::group([
 //    删除优惠券
     $router->delete('coupon_codes/{id}', 'CouponCodesController@destroy');
 
+//分类路由
+    $router->get('categories', 'CategoriesController@index');
+    $router->get('categories/create', 'CategoriesController@create');
+    $router->get('categories/{id}/edit', 'CategoriesController@edit');
+    $router->post('categories', 'CategoriesController@store');
+    $router->put('categories/{id}', 'CategoriesController@update');
+    $router->delete('categories/{id}', 'CategoriesController@destroy');
+    $router->get('api/categories', 'CategoriesController@apiIndex');
+
+
+
 
 
 });
