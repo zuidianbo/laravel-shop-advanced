@@ -50,7 +50,10 @@ class ProductsController extends AdminController
         $grid = new Grid(new Product);
 
         // 使用 with 来预加载商品类目数据，减少 SQL 查询
-        $grid->model()->with(['category']);
+//        $grid->model()->with(['category']);
+
+//        不显示众筹商品
+        $grid->model()->where('type', Product::TYPE_NORMAL)->with(['category']);
 
         $grid->id('ID')->sortable();
         $grid->title('商品名称');
@@ -116,7 +119,7 @@ class ProductsController extends AdminController
 
         // 创建一个输入框，第一个参数 title 是模型的字段名，第二个参数是该字段描述
         $form->text('title', '商品名称')->rules('required');
-
+        $form->hidden('type')->value(Product::TYPE_NORMAL);
 
         // 添加一个类目字段，与之前类目管理类似，使用 Ajax 的方式来搜索添加
         $form->select('category_id', '类目')->options(function ($id) {
