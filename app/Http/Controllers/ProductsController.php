@@ -9,6 +9,7 @@ use App\Exceptions\InvalidRequestException;
 use App\Models\OrderItem;
 
 use App\Models\Category;
+//use App\Services\CategoryService;
 
 class ProductsController extends Controller
 {
@@ -20,7 +21,9 @@ class ProductsController extends Controller
 //        return view('products.index', ['products' => $products]);
 //    }
 
-    public function index(Request $request)
+    // 使用 Laravel 的依赖注入，自动创建 $categoryService 对象
+//    public function index(Request $request,CategoryService $categoryService)
+         public function index(Request $request)
     {
         // 创建一个查询构造器
         $builder = Product::query()->where('on_sale', true);
@@ -88,6 +91,8 @@ class ProductsController extends Controller
             ],
             // 等价于 isset($category) ? $category : null
             'category' => $category ?? null,
+            // 将类目树传递给模板文件
+//            'categoryTree' => $categoryService->getCategoryTree(),
         ]);
 
 
