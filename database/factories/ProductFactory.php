@@ -31,7 +31,6 @@ $factory->define(Product::class, function (Faker $faker) {
 
     // 从数据库中随机取一个类目
     $category = \App\Models\Category::query()->where('is_directory', false)->inRandomOrder()->first();
-
     return [
         'title'        => $faker->word,
         'description'  => $faker->sentence,
