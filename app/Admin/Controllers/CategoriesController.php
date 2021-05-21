@@ -133,8 +133,12 @@ class CategoriesController extends AdminController
             $form->display('is_directory', '是否目录')->with(function ($value) {
                 return $value ? '是' :'否';
             });
+
+
             // 支持用符号 . 来展示关联关系的字段
             $form->display('parent.name', '父类目');
+
+
         } else {
             // 定义一个名为『是否目录』的单选框
             $form->radio('is_directory', '是否目录')
@@ -144,7 +148,14 @@ class CategoriesController extends AdminController
 
             // 定义一个名为父类目的下拉框
             $form->select('parent_id', '父类目')->ajax('/admin/api/categories');
+
+
+
         }
+
+
+
+
 
         return $form;
     }

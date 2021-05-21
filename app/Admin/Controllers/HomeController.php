@@ -13,8 +13,8 @@ class HomeController extends Controller
     public function index(Content $content)
     {
         return $content
-            ->title('Dashboard')
-            ->description('Description...')
+            ->title('HYH商城后台首页')
+            ->description('这里就是描述啦hyh...')
             ->row(Dashboard::title())
             ->row(function (Row $row) {
 
